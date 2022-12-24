@@ -1,6 +1,5 @@
 package hw2.task3;
 
-import java.net.Socket;
 import java.util.*;
 
 class CityOfLiving {
