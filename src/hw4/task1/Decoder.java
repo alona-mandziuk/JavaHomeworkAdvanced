@@ -43,14 +43,11 @@ class Decoder {
             newString = m.replaceAll(" JAVA ");
         }
 
-
         try (FileWriter newTextFile = new FileWriter
                 ("G:\\_java cbs\\homeWork\\JavaAdvanced\\src\\hw4\\task1\\newText.txt")) {
             newTextFile.write(newString);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 }
