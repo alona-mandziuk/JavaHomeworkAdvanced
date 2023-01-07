@@ -9,13 +9,13 @@ import java.lang.reflect.Method;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @interface Math {
-    int num1() default 100;
+    int num1() default 0;
 
-    int num2() default 200;
+    int num2() default 0;
 }
 
 class SumWithAnnotation {
-    @Math
+    @Math (num1 = 100, num2 = 200)
     static int mathSum(int num1, int num2) {
         int result = num1 + num2;
         return result;
