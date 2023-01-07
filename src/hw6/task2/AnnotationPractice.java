@@ -7,7 +7,6 @@ import java.lang.reflect.Method;
 @Inherited
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-
 @interface TestInheritedAnnotation {
     String string1();
 
