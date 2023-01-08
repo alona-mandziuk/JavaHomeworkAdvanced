@@ -1,7 +1,6 @@
 package hw7.task1;
 
 import java.io.*;
-import java.util.ArrayList;
 
 class Animal implements Serializable {
     private String animalType;
@@ -49,7 +48,6 @@ class Animal implements Serializable {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         Animal lion = new Animal("lion", "Arnold", 2);
-
 
         File file = new File("G:\\_java cbs\\homeWork\\JavaAdvanced\\src\\hw7\\task1\\serializeAnimal");
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
