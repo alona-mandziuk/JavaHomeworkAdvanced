@@ -1,51 +1,47 @@
 package hw8.task1;
 
 class WaitingThread {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Thread first = new Thread(new FirstThread());
         Thread second = new Thread(new SecondThread());
         Thread third = new Thread(new ThirdThread());
         first.start();
+        first.join(1000);
         second.start();
+        second.join(50000);
         third.start();
+        third.join(100000);
+        System.out.println("------------------------------");
+        if (!first.isAlive()) {
+            System.out.println("1 is out.");
+        }
+        if (!second.isAlive()) {
+            System.out.println("2 is out..");
+        }
+        if (!third.isAlive()) {
+            System.out.println("3 is out...");
+        }
+        System.out.println("---------FINISH");
     }
 
     static class FirstThread extends Thread {
         @Override
         public void run() {
-            setPriority(10);
-            try {
-                join();
-                System.out.println("1st Thread is finished.");
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            System.out.println("1st thread is running.");
         }
     }
 
     static class SecondThread extends Thread {
         @Override
         public void run() {
-            setPriority(5);
-            try {
-                join();
-                System.out.println("2nd Thread is finished.");
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            System.out.println("2nd thread is running..");
         }
     }
 
     static class ThirdThread extends Thread {
         @Override
         public void run() {
-            setPriority(1);
-            try {
-                join();
-                System.out.println("3d Thread is finished.");
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            System.out.println("3d thread is running...");
         }
     }
 }
