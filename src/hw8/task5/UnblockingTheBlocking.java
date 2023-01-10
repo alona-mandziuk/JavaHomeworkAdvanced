@@ -28,12 +28,12 @@ class BlockingTestClassOne extends Thread {
             e.printStackTrace();
         }
 
-        try {
-            System.out.println("First thread is finished.");
-            t1.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            System.out.println("First thread is finished.");
+//            t1.join();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         System.out.println("....1 is finished....");
     }
 
