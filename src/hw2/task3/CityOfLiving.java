@@ -3,8 +3,14 @@ package hw2.task3;
 import java.util.*;
 
 class CityOfLiving {
+    static void showAll (Map <String, String> list){
+        for (String key : list.keySet()) {
+            System.out.println(key);
+        }
+    }
+
     public static void main(String[] args) {
-        HashMap<String, String> cityFamily = new HashMap<>();
+        Map<String, String> cityFamily = new HashMap<>();
         cityFamily.put("London", "Potters");
         cityFamily.put("New York", "Smiths");
         cityFamily.put("Paris", "Croisants");
@@ -12,9 +18,9 @@ class CityOfLiving {
         cityFamily.put("Laplandiia", "Clauses");
         System.out.println("----------------------------------");
         System.out.println("Select the city to know who lives in:");
-        for (String key : cityFamily.keySet()) {
-            System.out.println(key);
-        }
+
+        showAll(cityFamily);
+
         System.out.println("Enter EXIT to exit the program");
         System.out.println("----------------------------------");
         String city = null;
