@@ -4,7 +4,7 @@ import java.io.*;
 
 class OperationWithFile {
     public static void main(String[] args) throws IOException {
-        File file = new File("G:\\_java cbs\\homeWork\\JavaAdvanced\\src\\hw3\\task1\\file.txt");
+        File file = new File("src\\hw3\\task1\\file.txt");
         FileWriter fileWriter = new FileWriter(file, true);
         PrintWriter printWriter = new PrintWriter(fileWriter);
         printWriter.write("Merry Christmas! ");

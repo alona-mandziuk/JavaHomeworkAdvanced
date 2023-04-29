@@ -5,13 +5,13 @@ import java.util.List;
 import java.util.Scanner;
 
 class DoubleWords {
-    static void doubleValues(List list) {
+    static void doubleValues(List<?> list) {
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i) + ", " + list.get(i));
         }
     }
 
-    static void showList(List list) {
+    static void showList(List<?> list) {
         for (int i = 0; i < list.size() - 1; i++) {
             System.out.print(list.get(i) + ", ");
         }
@@ -20,6 +20,7 @@ class DoubleWords {
 
 
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("--------------------------------------------");
         System.out.println("Input the 1st word: ");
