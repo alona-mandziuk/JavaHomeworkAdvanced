@@ -1,14 +1,27 @@
 package hw3.task2;
 
+import java.io.*;
+
 class TextSplitter {
+    static String fileToString(String filePath) {
+        String string = null;
+        StringBuilder stringBuilder = new StringBuilder();
+        try (BufferedReader bufferedReader = new BufferedReader
+                (new InputStreamReader(new FileInputStream(filePath), "Cp866"))) {
+            while ((string = bufferedReader.readLine()) != null) {
+                stringBuilder.append(string + System.lineSeparator());
+            }
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+
+        }
+        return stringBuilder.toString();
+
+    }
+
     public static void main(String[] args) {
-        String string1 = "The Asgardian Loki encounters the Other, " +
-                "the leader of an extraterrestrial race known as the Chitauri. " +
-                "In exchange for retrieving the Tesseract, a powerful energy source of unknown potential, " +
-                "the Other promises Loki an army with which he can subjugate Earth. " +
-                "Nick Fury, director of the espionage agency SHIELD, " +
-                "arrives at a remote research facility, where physicist Dr Erik Selvig " +
-                "is leading a team experimenting on the Tesseract.";
+
+        String string1 = fileToString("src\\hw3\\task2\\file.txt");
         String string2 = string1.substring(0, string1.length() / 2);
         String string3 = string1.substring(string1.length() / 2);
 
