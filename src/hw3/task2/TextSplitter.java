@@ -21,7 +21,7 @@ class TextSplitter {
 
     public static void main(String[] args) {
 
-        String string1 = fileToString("src\\hw3\\task2\\file.txt");
+        String string1 = fileToString("src/hw3/task2/file.txt");
         String string2 = string1.substring(0, string1.length() / 2);
         String string3 = string1.substring(string1.length() / 2);
 

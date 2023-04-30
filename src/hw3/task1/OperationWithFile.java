@@ -14,7 +14,7 @@ class OperationWithFile {
      * @throws IOException
      */
     static void createTXTFile(String input) throws IOException {
-        File file = new File("src\\hw3\\task1\\file.txt");
+        File file = new File("src/hw3/task1/file.txt");
         FileWriter fileWriter = new FileWriter(file, false);
         PrintWriter printWriter = new PrintWriter(fileWriter);
         printWriter.write(input);
@@ -31,7 +31,7 @@ class OperationWithFile {
      */
 
     static void readFromFile() throws IOException {
-        FileReader fileReader = new FileReader("src\\hw3\\task1\\file.txt");
+        FileReader fileReader = new FileReader("src/hw3/task1/file.txt");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         String string;
         while ((string = bufferedReader.readLine()) != null) {
