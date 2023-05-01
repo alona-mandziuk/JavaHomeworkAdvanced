@@ -7,7 +7,8 @@ import java.util.Scanner;
 import static java.time.temporal.ChronoUnit.*;
 
 class TimeSinceYourBirth {
-    static void TimeFromBirthday(int year, int month, int day, int hour, int minutes) {
+
+    static void timeFromBirthday(int year, int month, int day, int hour, int minutes) {
         LocalDateTime now = LocalDateTime.now();
         LocalDate nowDate = LocalDate.now();
         LocalDateTime input = LocalDateTime.of(year, month, day, hour, minutes);
@@ -44,7 +45,7 @@ class TimeSinceYourBirth {
         scanner = new Scanner(System.in);
         int min = scanner.nextInt();
         System.out.println("--------------------------------------------");
-        TimeFromBirthday(year, month, day, hour, min);
+        timeFromBirthday(year, month, day, hour, min);
         System.out.println("--------------------------------------------");
 
     }
