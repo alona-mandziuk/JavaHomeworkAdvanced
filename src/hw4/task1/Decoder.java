@@ -12,8 +12,15 @@ import java.util.regex.Pattern;
 
 
 class Decoder {
-    public static void main(String[] args) {
-        Path preposition = Paths.get("G:\\_java cbs\\homeWork\\JavaAdvanced\\src\\hw4\\task1\\preposition.txt");
+    /**
+     * Method changes all propositions from the original text from the sorce user choose
+     * to the chosen word.
+     *
+     * @param changeOn
+     * @param source
+     */
+    static void changePreposition(String changeOn, String source) {
+        Path preposition = Paths.get("src/hw4/task1/preposition.txt");
 
         List<String> prepositionArray = new ArrayList<>();
         try {
@@ -25,8 +32,7 @@ class Decoder {
 
         StringBuilder newText = new StringBuilder();
         try (BufferedReader textReader = new BufferedReader(new InputStreamReader
-                (new FileInputStream("G:\\_java cbs\\homeWork\\JavaAdvanced\\src\\hw4" +
-                        "\\task1\\originalText.txt"), "UTF-8"))) {
+                (new FileInputStream(source), "UTF-8"))) {
             String text;
             while ((text = textReader.readLine()) != null) {
                 newText.append(text).append("\n");
@@ -40,14 +46,19 @@ class Decoder {
         for (int i = 0; i < prepositionArray.size(); i++) {
             Pattern p = Pattern.compile(prepositionArray.get(i), Pattern.CASE_INSENSITIVE);
             Matcher m = p.matcher(newString);
-            newString = m.replaceAll(" JAVA ");
+            newString = m.replaceAll(changeOn);
         }
 
         try (FileWriter newTextFile = new FileWriter
-                ("G:\\_java cbs\\homeWork\\JavaAdvanced\\src\\hw4\\task1\\newText.txt")) {
+                ("src/hw4/task1/newText.txt")) {
             newTextFile.write(newString);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+    public static void main(String[] args) {
+        changePreposition(" JAVA ", "src/hw4/task1/originalText.txt");
     }
 }
