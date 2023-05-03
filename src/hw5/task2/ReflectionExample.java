@@ -7,7 +7,19 @@ import java.lang.reflect.Modifier;
 
 class ReflectionExample {
     public static void main(String[] args) {
-        Class<?> cl = Instance.class;
+        getFeilds("hw5.task2.Instance");
+        getConstructors("hw5.task2.Instance");
+        getMethods("hw5.task2.Instance");
+    }
+
+
+    static void getFeilds(String instance) {
+        Class<?> cl = null;
+        try {
+            cl = Class.forName(instance);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println("-------------------------");
         System.out.println("Class name: " + cl.getName());
 
@@ -28,8 +40,21 @@ class ReflectionExample {
                 System.out.println("Static. ");
             } else if (Modifier.isFinal(modsF)) {
                 System.out.println("Final. ");
+            } else if (Modifier.isProtected(modsF)) {
+                System.out.println("Protected. ");
+            } else {
+                System.out.println("Default. ");
             }
             System.out.println(" ");
+        }
+    }
+
+    static void getConstructors(String instance) {
+        Class<?> cl = null;
+        try {
+            cl = Class.forName(instance);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
         System.out.println("-------------------------");
         System.out.println("Constructors: ");
@@ -48,6 +73,10 @@ class ReflectionExample {
                 System.out.println("Static. ");
             } else if (Modifier.isFinal(modsC)) {
                 System.out.println("Final. ");
+            } else if (Modifier.isProtected(modsC)) {
+                System.out.println("Protected. ");
+            } else {
+                System.out.println("Default. ");
             }
 
             Class<?>[] paramTypes = ctr.getParameterTypes();
@@ -55,32 +84,47 @@ class ReflectionExample {
                 System.out.println(" " + paramType.getName() + " ");
             }
             System.out.println(" ");
+        }
 
-            System.out.println("--------------------------------");
-            System.out.println("Methods: ");
-            System.out.println(" ");
-            Method[] methods = cl.getDeclaredMethods();
-            for (Method method : methods) {
-                System.out.println("Name: " + method.getName());
-                System.out.println("\tReturned type: " + method.getReturnType().getName());
-                int modsM = ctr.getModifiers();
-                System.out.println("\tModifier: ");
-                if (Modifier.isPrivate(modsM)) {
-                    System.out.println("Private.");
-                } else if (Modifier.isPublic(modsM)) {
-                    System.out.println("Public. ");
-                } else if (Modifier.isStatic(modsM)) {
-                    System.out.println("Static. ");
-                } else if (Modifier.isFinal(modsM)) {
-                    System.out.println("Final. ");
-                }
-                Class<?>[] paramTypes2 = method.getParameterTypes();
-                System.out.println("\tParametr types: ");
-                for (Class<?> paramType : paramTypes2) {
-                    System.out.println(" " + paramType.getName());
-                }
-                System.out.println(" ");
+
+    }
+
+    static void getMethods(String instance) {
+        Class<?> cl = null;
+        try {
+            cl = Class.forName(instance);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("--------------------------------");
+        System.out.println("Methods: ");
+        System.out.println(" ");
+        Method[] methods = cl.getDeclaredMethods();
+        for (Method method : methods) {
+            System.out.println("Name: " + method.getName());
+            System.out.println("\tReturned type: " + method.getReturnType().getName());
+            int modsM = method.getModifiers();
+            System.out.println("\tModifier: ");
+            if (Modifier.isPrivate(modsM)) {
+                System.out.println("Private.");
+            } else if (Modifier.isPublic(modsM)) {
+                System.out.println("Public. ");
+            } else if (Modifier.isStatic(modsM)) {
+                System.out.println("Static. ");
+            } else if (Modifier.isFinal(modsM)) {
+                System.out.println("Final. ");
+            } else if (Modifier.isProtected(modsM)) {
+                System.out.println("Protected. ");
+            } else {
+                System.out.println("Default. ");
             }
+
+            Class<?>[] paramTypes = method.getParameterTypes();
+            System.out.println("\tParametr types: ");
+            for (Class<?> paramType : paramTypes) {
+                System.out.println(" " + paramType.getName());
+            }
+            System.out.println(" ");
         }
     }
 }
