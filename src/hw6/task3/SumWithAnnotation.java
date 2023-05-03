@@ -9,9 +9,9 @@ import java.lang.reflect.Method;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @interface Math {
-    int num1() default 0;
+    int num1();
 
-    int num2() default 0;
+    int num2();
 }
 
 class SumWithAnnotation {
@@ -26,7 +26,7 @@ class SumWithAnnotation {
         Method method = cl.getDeclaredMethod("mathSum", int.class, int.class);
         Math math = method.getAnnotation(Math.class);
         System.out.println("-----------------------");
-        System.out.println("The sum 100 and 200 is " + mathSum(math.num1(), math.num2()) + ".");
+        System.out.println("The sum of 100 and 200 is " + mathSum(math.num1(), math.num2()) + ".");
         System.out.println("-----------------------");
     }
 }
