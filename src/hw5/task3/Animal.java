@@ -1,9 +1,9 @@
 package hw5.task3;
 
 class Animal {
-    private int age = 5;
-    public String animalName = "Rex";
-    protected String animalType = "Dog";
+    private int age = 2;
+    public String animalName = "Lucky";
+    String animalType = "Dog";
 
     @Override
     public String toString() {

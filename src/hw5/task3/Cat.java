@@ -3,8 +3,7 @@ package hw5.task3;
 import java.lang.reflect.Field;
 
 class Cat {
-    public static void main(String[] args) {
-        try {
+    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
             Animal animal = new Animal();
             System.out.println("--------------------------");
             System.out.println("Original " + "\n" + animal);
@@ -20,12 +19,5 @@ class Cat {
             field2.setAccessible(true);
             field2.set(animal, "cat");
             System.out.println("After modification: " + "\n" + animal);
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-
-
     }
 }
