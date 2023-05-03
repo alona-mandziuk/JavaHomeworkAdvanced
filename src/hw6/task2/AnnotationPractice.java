@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 }
 
 class AnnotationPractice {
-    @TestInheritedAnnotation(string1 = "Merry", string2 = "Christmas!")
+    @TestInheritedAnnotation(string1 = "MERRY", string2 = "CHRISTMAS!")
     void merryChristmasMethod(String string1, String string2) {
         System.out.println(string1 + " " + string2);
     }
@@ -24,7 +24,7 @@ class AnnotationPractice2 extends AnnotationPractice {
     @Override
     void merryChristmasMethod(String string1, String string2) {
         super.merryChristmasMethod(string1, string2);
-        System.out.println("And Happy New Year!");
+        System.out.println("and HAPPY NEW YEAR!");
 
     }
 
