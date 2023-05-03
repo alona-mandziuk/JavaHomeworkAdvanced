@@ -15,17 +15,17 @@ class GetClassInfo{
         GetClassInfo g = new GetClassInfo();
         try {
             Class <?> classInstance = Class.forName(className);
-            System.out.println("-------------------------------------------");
+            System.out.println("----------------------------------------");
             System.out.println("------Class: " + classInstance);
             System.out.println("FIELDS: ");
             g.showAll(classInstance.getDeclaredFields());
-            System.out.println("-------------------------------------------");
+            System.out.println("----------------------------------------");
             System.out.println("CONSTRUCTORS: ");
             g.showAll(classInstance.getDeclaredConstructors());
-            System.out.println("-------------------------------------------");
+            System.out.println("----------------------------------------");
             System.out.println("METHODS: ");
             g.showAll(classInstance.getDeclaredMethods());
-            System.out.println("-------------------------------------------");
+            System.out.println("----------------------------------------");
             System.out.println("FINISH.");
 
         } catch (ClassNotFoundException e) {
@@ -35,7 +35,7 @@ class GetClassInfo{
     }
 
     public static void main(String[] args) {
-        System.out.println("--------------------------------------");
+        System.out.println("----------------------------------------");
         System.out.println("Input a full name of the class: ");
         Scanner scanner = new Scanner(System.in);
         String className = scanner.nextLine();
