@@ -7,8 +7,8 @@ import java.util.Scanner;
 @Documented
 @ProgramInfo(
         author = "Alona Mandziuk",
-        version = "2.02",
-        date = "07.01.2023")
+        version = "2.03",
+        date = "03.05.2023")
 
 /**
  * The annotation Calc contains two parameters in default values, is used
