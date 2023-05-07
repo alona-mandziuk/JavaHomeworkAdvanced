@@ -16,7 +16,7 @@ class City {
     @XmlElement
     String street;
 
-    @XmlElement
+    @XmlElement(name = "building_number")
     String building;
 
     public City() {
