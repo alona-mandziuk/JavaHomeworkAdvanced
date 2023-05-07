@@ -46,19 +46,28 @@ class Animal implements Serializable {
                 '.';
     }
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
-        Animal lion = new Animal("lion", "Arnold", 2);
-
-        File file = new File("G:\\_java cbs\\homeWork\\JavaAdvanced\\src\\hw7\\task1\\serializeAnimal");
-        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
-        oos.writeObject(lion);
+    static void serializeAnimal(String path, Animal animal) throws IOException {
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path));
+        oos.writeObject(animal);
         oos.flush();
         oos.close();
+    }
 
-        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
+    static void deserializeAnimal(String path) throws IOException, ClassNotFoundException {
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path));
         Animal newAnimal = (Animal) ois.readObject();
         ois.close();
         System.out.println(newAnimal);
+    }
 
+
+
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        Animal lion = new Animal("lion", "Arnold", 2);
+
+        File file = new File("src/hw7/task1/serializeAnimal");
+
+        serializeAnimal(String.valueOf(file), lion);
+        deserializeAnimal(String.valueOf(file));
     }
 }
