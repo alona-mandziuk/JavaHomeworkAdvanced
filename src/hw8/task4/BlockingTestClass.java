@@ -11,7 +11,7 @@ class BlockingTestClassOne extends Thread {
     public void run() {
         System.out.println("First thread starts...");
         try {
-            sleep(2000);
+            sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -48,7 +48,7 @@ class BlockingTestClassTwo extends Thread {
             e.printStackTrace();
         }
         try {
-            sleep(1000);
+            sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
