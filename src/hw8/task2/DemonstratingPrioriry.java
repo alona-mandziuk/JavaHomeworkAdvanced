@@ -5,6 +5,9 @@ class DemonstratingPrioriry extends Thread {
     public void run() {
         setPriority(MIN_PRIORITY);
         System.out.println("MIN priority Thread is running");
+        for (int i = 1; i <= 50; i++) {
+            System.out.println(i + " | MIN priority Thread ");
+        }
     }
 
     static class PriorityRunner extends Thread {
@@ -18,7 +21,7 @@ class DemonstratingPrioriry extends Thread {
         }
     }
 
-    static class PrirityThread extends Thread {
+    static class PriorityThread extends Thread {
         @Override
         public void run() {
             setPriority(MAX_PRIORITY);
@@ -32,7 +35,7 @@ class DemonstratingPrioriry extends Thread {
     public static void main(String[] args) {
         Thread min = new Thread(new DemonstratingPrioriry());
         Thread norm = new Thread(new PriorityRunner());
-        Thread max = new Thread(new PrirityThread());
+        Thread max = new Thread(new PriorityThread());
         min.start();
         norm.start();
         max.start();
