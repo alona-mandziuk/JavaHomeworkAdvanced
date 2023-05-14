@@ -6,12 +6,12 @@ class WaitingThread {
         Thread second = new Thread(new SecondThread());
         Thread third = new Thread(new ThirdThread());
         first.start();
-        first.join(1000);
+        first.join(2000);
         second.start();
-        second.join(50000);
+        second.join(30000);
         third.start();
-        third.join(100000);
-        System.out.println("------------------------------");
+        third.join(70000);
+        System.out.println("-----------------------------");
         if (!first.isAlive()) {
             System.out.println("1 is out.");
         }
@@ -21,7 +21,7 @@ class WaitingThread {
         if (!third.isAlive()) {
             System.out.println("3 is out...");
         }
-        System.out.println("---------FINISH");
+        System.out.println("---------FINISH--------------");
     }
 
     static class FirstThread extends Thread {

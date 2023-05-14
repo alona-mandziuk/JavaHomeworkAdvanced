@@ -11,7 +11,6 @@ import java.util.Scanner;
 class JAXBfileParsing {
 
     public static void main(String[] args) throws JAXBException, IOException {
-
         System.out.println("---------------------");
         System.out.println("Input the city: ");
         Scanner scanner = new Scanner(System.in);
