@@ -10,7 +10,7 @@ class Sweets {
 
     synchronized void eat(Kids kid) throws InterruptedException {
         if (onPlate) {
-            Thread.sleep(100);
+            Thread.sleep(1500);
             onPlate = false;
             System.out.println("Kid " + kid.kidName + " ate " + this.sweet);
         }
@@ -29,20 +29,10 @@ class Kids extends Thread {
     @Override
     public synchronized void run() {
         for (int i = 0; i < sweets.length; i++) {
-            if (sweets[i].onPlate) {
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                sweets[i].onPlate = false;
-                System.out.println("Kid " + kidName + " ate " + sweets[i].sweet);
-
-            }
             try {
                 sweets[i].eat(this);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
         }
     }
