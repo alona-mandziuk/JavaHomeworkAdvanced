@@ -1,6 +1,5 @@
 package hw9.task3;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 @FunctionalInterface
@@ -16,7 +15,7 @@ class CalcWithLambda {
     static Calculator div = ((var1, var2) -> var1 / var2);
 
 
-    public static void main(String[] args) throws ArithmeticException, InputMismatchException {
+    public static void main(String[] args) throws ArithmeticException {
         System.out.println("-----------------------------");
         System.out.println("SIMPLE CALC");
 
