@@ -6,15 +6,15 @@ import java.util.Scanner;
 
 @FunctionalInterface
 interface Calculator {
-    BigDecimal calculate(BigDecimal var1, BigDecimal var2);
+    int calculate(int var1, int var2);
 }
 
 class CalcWithLambda {
 
-    static Calculator add = (BigDecimal::add);
-    static Calculator sub = (BigDecimal::subtract);
-    static Calculator mult = (BigDecimal::multiply);
-    static Calculator div = (BigDecimal::divide);
+    static Calculator add = ((var1, var2) -> var1 + var2);
+    static Calculator sub = ((var1, var2) -> var1 - var2);
+    static Calculator mult = ((var1, var2) -> var1 * var2);
+    static Calculator div = ((var1, var2) -> var1 / var2);
 
 
     public static void main(String[] args) throws ArithmeticException, InputMismatchException {
@@ -22,27 +22,13 @@ class CalcWithLambda {
         System.out.println("SIMPLE CALC");
 
         while (true) {
-            System.out.println("Input two numbers: ");
+            System.out.println("Input two integers: ");
             System.out.println("1: ");
             Scanner scanner = new Scanner(System.in);
-            BigDecimal var1 = null;
-            try {
-                var1 = scanner.nextBigDecimal();
-            } catch (InputMismatchException e) {
-                System.err.println("Input with coma");
-                e.printStackTrace();
-            }
+            int var1 = scanner.nextInt();
 
             System.out.println("2: ");
-            scanner = new Scanner(System.in);
-            BigDecimal var2 = null;
-            try {
-                var2 = scanner.nextBigDecimal();
-            } catch (InputMismatchException e) {
-                System.err.println("Input with coma");
-                e.printStackTrace();
-            }
-
+            int var2 = scanner.nextInt();
             System.out.println("----------------------");
             System.out.println("Choose the action: +, -, *, /, E (for exit): ");
             scanner = new Scanner(System.in);
