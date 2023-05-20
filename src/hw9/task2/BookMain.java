@@ -18,7 +18,7 @@ class BookMain {
             public void show() {
                 for (Book b : bookList) {
                     if (b.getAuthor().equalsIgnoreCase("Den Brown")) {
-                        System.out.println(b);
+                        System.out.println(b.getName() + ", " + b.getYear());
                     }
                 }
             }
@@ -29,6 +29,12 @@ class BookMain {
         System.out.println("-----------------------");
         System.out.println("Author: J. K. Rowling");
         bookList.stream().filter(book -> book.getAuthor().equalsIgnoreCase("J. K. Rowling"))
+                .map(book -> {
+                    var bn = book.getName();
+                    var by = book.getYear();
+                    var b = bn + ", " + by;
+                    return b;
+                })
                 .forEach(System.out::println);
 
     }
