@@ -21,7 +21,7 @@ class SumSqureNumbers {
     public static void main(String[] args) {
         System.out.println("-------------------------");
         System.out.println("Array of integers: ");
-        List <Integer> listInt = (ArrayList<Integer>) randomizer(3);
+        List <Integer> listInt = (ArrayList<Integer>) randomizer(10);
         listInt.forEach(System.out::println);
         System.out.println("-------------------------");
         System.out.println("The sum of all squres of numbers = " + sumOfsquareOfNumbers(listInt));
