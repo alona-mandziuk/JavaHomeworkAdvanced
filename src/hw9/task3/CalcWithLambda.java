@@ -1,56 +1,71 @@
 package hw9.task3;
 
+import java.math.BigDecimal;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 @FunctionalInterface
 interface Calculator {
-    int calculate(int var1, int var2);
+    BigDecimal calculate(BigDecimal var1, BigDecimal var2);
 }
 
 class CalcWithLambda {
-    static Calculator add = ((var1, var2) -> var1 + var2);
-    static Calculator sub = ((var1, var2) -> var1 - var2);
-    static Calculator mult = ((var1, var2) -> var1 * var2);
-    static Calculator div = ((var1, var2) -> var1 / var2);
 
-    public static void main(String[] args) throws ArithmeticException {
+    static Calculator add = (BigDecimal::add);
+    static Calculator sub = (BigDecimal::subtract);
+    static Calculator mult = (BigDecimal::multiply);
+    static Calculator div = (BigDecimal::divide);
+
+
+    public static void main(String[] args) throws ArithmeticException, InputMismatchException {
         System.out.println("-----------------------------");
         System.out.println("SIMPLE CALC");
-        System.out.println("Input two integers: ");
-        System.out.println("1: ");
-        Scanner scanner = new Scanner(System.in);
-        int var1 = scanner.nextInt();
-        System.out.println("2: ");
-        scanner = new Scanner(System.in);
-        int var2 = scanner.nextInt();
-        System.out.println("----------------------");
+
         while (true) {
+            System.out.println("Input two numbers: ");
+            System.out.println("1: ");
+            Scanner scanner = new Scanner(System.in);
+            BigDecimal var1 = null;
+            try {
+                var1 = scanner.nextBigDecimal();
+            } catch (InputMismatchException e) {
+                System.err.println("Input with coma");
+                e.printStackTrace();
+            }
+
+            System.out.println("2: ");
+            scanner = new Scanner(System.in);
+            BigDecimal var2 = null;
+            try {
+                var2 = scanner.nextBigDecimal();
+            } catch (InputMismatchException e) {
+                System.err.println("Input with coma");
+                e.printStackTrace();
+            }
+
+            System.out.println("----------------------");
             System.out.println("Choose the action: +, -, *, /, E (for exit): ");
             scanner = new Scanner(System.in);
             String act = scanner.next();
+
             if (act.equals("+") || act.equals("-") || act.equals("*") || act.equals("/")) {
                 switch (act.toLowerCase()) {
                     case "+":
-                        int resultAdd = add.calculate(var1, var2);
-                        System.out.println(resultAdd);
+                        System.out.println(add.calculate(var1, var2));
                         break;
                     case "-":
-                        int resultSub = sub.calculate(var1, var2);
-                        System.out.println(resultSub);
+                        System.out.println(sub.calculate(var1, var2));
                         break;
                     case "*":
-                        int resultMult = mult.calculate(var1, var2);
-                        System.out.println(resultMult);
+                        System.out.println(mult.calculate(var1, var2));
                         break;
                     case "/":
-                        if (var2 == 0) {
-                            System.out.println("No dividing to ZERO!");
-                        } else {
-                            int resultDiv = div.calculate(var1, var2);
-                            System.out.println(resultDiv);
+                        try {
+                            System.out.println(div.calculate(var1, var2));
+                        } catch (ArithmeticException e) {
+                            System.err.println("No dividing to ZERO!");
                         }
                         break;
-
                 }
             } else if (act.equalsIgnoreCase("e")) {
                 break;
