@@ -1,6 +1,5 @@
 package hw9.task3;
 
-import java.math.BigDecimal;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
